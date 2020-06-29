@@ -1,0 +1,36 @@
+{
+  "name": "dockerized-hapi-rest-template",
+  "version": "0.0.0",
+  "description": "A boilerplate REST API stack with hapijs, es6 and docker support",
+  "main": "./lib/app.js",
+  "author": "Soumik Mukherjee <me@soumikmukherjee.dev>",
+  "license": "Apache-2.0",
+  "private": true,
+  "dependencies": {
+    "@hapi/boom": "^9.1.0",
+    "@hapi/hapi": "^19.1.1",
+    "@hapi/hoek": "^9.0.4",
+    "dotenv": "^8.2.0"
+  },
+  "scripts": {
+    "start": "node ./lib/app.js",
+    "clean": "rm -rf ./lib/",
+    "build": "babel src --out-dir lib",
+    "dev:build": "babel src --out-dir lib --source-maps inline",
+    "dev:debug": "node --nolazy --inspect-brk=0.0.0.0:9339 ./lib/app.js ",
+    "prebuild": "yarn clean",
+    "predev:build": "yarn clean",
+    "encrypt:env-files": "",
+    "container:run-local": "docker run -p 8080:8080 -p 127.0.0.1:9339:9339 -d --name %npm_package_name% %npm_package_name%:local",
+    "container:clean": "docker rm %npm_package_name%",
+    "precontainer:clean": "docker kill %npm_package_name%",
+    "image:build": "docker build -f Dockerfile.prod -t %npm_package_name%:%npm_package_version% -t %npm_package_name%:production -t %npm_package_name%:latest .",
+    "image:build-local": "docker build -f Dockerfile.dev -t %npm_package_name%:development -t %npm_package_name%:local -t %npm_package_name%:latest -t %npm_package_name%:%npm_package_version% .",
+    "image:clean-local": "docker image rm %npm_package_name%:%npm_package_version% %npm_package_name%:development %npm_package_name%:latest %npm_package_name%:local"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.5"
+  }
+}

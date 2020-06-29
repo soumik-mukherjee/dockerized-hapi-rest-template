@@ -1,0 +1,1 @@
+# Docker + HAPI + es6
