@@ -26,6 +26,7 @@
     "container:clean": "docker rm %npm_package_name%",
     "precontainer:clean": "docker kill %npm_package_name%",
     "image:build": "docker build -f Dockerfile.prod -t %npm_package_name%:%npm_package_version% -t %npm_package_name%:production -t %npm_package_name%:latest .",
+    "image:build-ci": "docker build -f Dockerfile.prod -t $npm_package_name:$npm_package_version -t $npm_package_name:production -t $npm_package_name:latest .",
     "image:build-local": "docker build -f Dockerfile.dev -t %npm_package_name%:development -t %npm_package_name%:local -t %npm_package_name%:latest -t %npm_package_name%:%npm_package_version% .",
     "image:clean-local": "docker image rm %npm_package_name%:%npm_package_version% %npm_package_name%:development %npm_package_name%:latest %npm_package_name%:local"
   },
