@@ -21,6 +21,7 @@
     "prebuild": "yarn clean",
     "predev:build": "yarn clean",
     "encrypt:env-files": "",
+    "container:run": "docker run -p 8080:8080 -d --name %npm_package_name% %npm_package_name%:%npm_package_version%",
     "container:run-local": "docker run -p 8080:8080 -p 127.0.0.1:9339:9339 -d --name %npm_package_name% %npm_package_name%:local",
     "container:clean": "docker rm %npm_package_name%",
     "precontainer:clean": "docker kill %npm_package_name%",
