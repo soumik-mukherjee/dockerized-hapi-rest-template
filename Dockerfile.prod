@@ -14,7 +14,7 @@ RUN yarn
 COPY --chown=node:node src ./src/
 COPY --chown=node:node .babelrc .
 # Uncomment the below line before using in production (if you need env vars support in code)
-# COPY --chown=node:node .env .
+COPY --chown=node:node .env .
 
 RUN yarn build
 EXPOSE 8080
