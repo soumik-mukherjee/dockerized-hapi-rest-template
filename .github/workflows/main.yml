@@ -1,25 +1,37 @@
 # My Release Workflow - Upload a zip of the source from a tag
 on:
-    push:
-      # Sequence of patterns matched against refs/tags
-      tags:
-        - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
+  push:
+    # Sequence of patterns matched against refs/tags
+    tags:
+      - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
   
 name: release
 
 jobs:
     build:
-        name: Create Release
-        runs-on: ubuntu-latest
-        steps:
-        - name: Checkout code
-          uses: actions/checkout@v2
-        - name: Pre-build
-          run: cat .sample-env >> .env 
-        - name: Build Docker Image
-          run: yarn image:build-ci
+      name: Build container
+      runs-on: ubuntu-latest
+      steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Pre-build
+        run: cat .sample-env >> .env 
+      - name: Build Docker Image
+        run: yarn image:build-ci
+    test:
+      name: test
+      needs: build
+      steps:
         - name: Run Container
-          run: yarn container:run-ci          
+          run: yarn container:run-ci   
+        - name: Install Depenedencies
+          run: yarn install
+        - name: Run Tests
+          run: yarn test
+    release:
+      name: release
+      needs: test
+      steps:
         - name: Create Release
           id: create_release
           uses: actions/create-release@v1

@@ -12,7 +12,7 @@ USER node
 RUN yarn
 
 COPY --chown=node:node src ./src/
-COPY --chown=node:node .babelrc .
+COPY --chown=node:node babel.config.js .
 # Uncomment the below line before using in production (if you need env vars support in code)
 COPY --chown=node:node .env .
 

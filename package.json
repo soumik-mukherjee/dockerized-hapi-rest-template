@@ -10,12 +10,14 @@
     "@hapi/boom": "^9.1.0",
     "@hapi/hapi": "^19.1.1",
     "@hapi/hoek": "^9.0.4",
+    "@hapi/wreck": "^17.0.0",
     "dotenv": "^8.2.0"
   },
   "scripts": {
     "start": "node ./lib/app.js",
     "clean": "rm -rf ./lib/",
     "build": "babel src --out-dir lib",
+    "test": "lab --sourcemaps --transform ./es6-lab.config.js --threshold 0 --reporter html --output coverage.html",
     "dev:build": "babel src --out-dir lib --source-maps inline",
     "dev:debug": "node --nolazy --inspect-brk=0.0.0.0:9339 ./lib/app.js ",
     "prebuild": "yarn clean",
@@ -34,6 +36,8 @@
   "devDependencies": {
     "@babel/cli": "^7.8.4",
     "@babel/core": "^7.9.0",
-    "@babel/preset-env": "^7.9.5"
+    "@babel/preset-env": "^7.9.5",
+    "@hapi/code": "^8.0.1",
+    "@hapi/lab": "^22.0.4"
   }
 }

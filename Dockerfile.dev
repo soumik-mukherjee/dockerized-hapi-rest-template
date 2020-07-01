@@ -12,7 +12,7 @@ USER node
 RUN yarn
 
 COPY --chown=node:node src ./src/
-COPY --chown=node:node .babelrc .
+COPY --chown=node:node babel.config.js .
 COPY --chown=node:node .env .
 
 RUN yarn dev:build
