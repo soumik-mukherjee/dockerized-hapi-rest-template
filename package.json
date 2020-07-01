@@ -17,7 +17,7 @@
     "start": "node ./lib/app.js",
     "clean": "rm -rf ./lib/",
     "build": "babel src --out-dir lib",
-    "test": "lab --sourcemaps --transform ./es6-lab.config.js --threshold 0 --reporter html --output coverage.html",
+    "test": "lab --sourcemaps --transform ./es6-lab.config.js",
     "dev:build": "babel src --out-dir lib --source-maps inline",
     "dev:debug": "node --nolazy --inspect-brk=0.0.0.0:9339 ./lib/app.js ",
     "prebuild": "yarn clean",
