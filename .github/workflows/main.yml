@@ -9,7 +9,7 @@ name: release
 
 jobs:
     build:
-      name: Build container
+      name: Build & Test Container
       runs-on: ubuntu-latest
       steps:
       - name: Checkout code
@@ -18,19 +18,16 @@ jobs:
         run: cat .sample-env >> .env 
       - name: Build Docker Image
         run: yarn image:build-ci
-    test:
-      name: test
-      needs: build
-      steps:
-        - name: Run Container
-          run: yarn container:run-ci   
-        - name: Install Depenedencies
-          run: yarn install
-        - name: Run Tests
-          run: yarn test
+      - name: Run Container
+        run: yarn container:run-ci   
+      - name: Install Depenedencies
+        run: yarn install
+      - name: Run Tests
+        run: yarn test
     release:
-      name: release
-      needs: test
+      name: Release
+      runs-on: ubuntu-latest
+      needs: build
       steps:
         - name: Create Release
           id: create_release
