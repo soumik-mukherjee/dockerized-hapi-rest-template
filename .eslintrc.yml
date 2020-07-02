@@ -3,6 +3,6 @@ env:
   es6: true
 parserOptions:
   ecmaVersion: 6
-  sourceType: module
+  sourceType: script
 parser: "babel-eslint"
 rules: {}
