@@ -57,7 +57,7 @@
       "eslint --fix-dry-run",
       "prettier --write ."
     ],
-    "lib/**/*.test.js": [
+    "test/**/*.test.js": [
       "eslint --fix-dry-run",
       "prettier --loglevel debug --write ."
     ]
