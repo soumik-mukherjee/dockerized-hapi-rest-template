@@ -19,7 +19,7 @@ describe("SonnyTheHumanoid", () => {
   it("can be created", () => {
     const { res, payload } = response;
     expect(res.statusCode).to.equal(201);
-        });
+         });
  it("responds in plain text", () => {const { res, payload } = response;expect(res.headers["content-type"]).to.equal("text/plain; charset=utf-8");});
 
   it("thanks creator", async () => {
