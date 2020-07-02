@@ -1,4 +1,6 @@
-# My Release Workflow - Upload a zip of the source from a tag
+# My Release Workflow - Create a release with following assets,
+#   1. A zip of the source from a tag
+#   2. The test report for this run
 on:
   push:
     # Sequence of patterns matched against refs/tags
@@ -35,7 +37,12 @@ jobs:
           draft: false
           prerelease: true
       - name: Attach Test Coverage
-        uses: actions/upload-artifact@v2
+        id: upload-release-asset 
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          name: coverage-report
-          path: ./coverage.html
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./coverage.html
+          asset_name: coverage-report
+          asset_content_type: text/html
