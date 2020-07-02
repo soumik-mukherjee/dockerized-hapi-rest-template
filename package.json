@@ -55,6 +55,10 @@
     "src/**.js": [
       "eslint --fix-dry-run",
       "prettier --write"
+    ],
+    "test/**.js": [
+      "eslint --fix-dry-run",
+      "prettier --write"
     ]
   }
 }
