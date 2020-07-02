@@ -38,7 +38,23 @@
     "@babel/core": "^7.9.0",
     "@babel/preset-env": "^7.9.5",
     "@hapi/code": "^8.0.1",
+    "@hapi/eslint-plugin-hapi": "^4.3.5",
     "@hapi/lab": "^22.0.4",
-    "prettier": "2.0.5"
+    "eslint": "^7.3.1",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.11",
+    "prettier": "2.0.5",
+    "pretty-quick": "^2.0.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**.js": [
+      "eslint --fix-dry-run",
+      "prettier --write"
+    ]
   }
 }

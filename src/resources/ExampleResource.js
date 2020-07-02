@@ -1,5 +1,5 @@
-import { Readable, pipeline } from "stream";
-import util from "util";
+//import { Readable, pipeline } from "stream";
+//import util from "util";
 
 // A sample RESTful API resource, named 'SonnyTheHumanoid', supporting a 'POST' method
 export const SonnyTheHumanoid = {
@@ -14,9 +14,7 @@ export const SonnyTheHumanoid = {
         return h
           .response(
             `Hello ${request.query.creator}, this is Sonny. Thanks for creating me!`
-          )
-          .type("text/plain")
-          .code(201);
+          ).type("text/plain").code(201);
       } catch (err) {
         console.error(err);
         return h.response("Internal error").code(500);
