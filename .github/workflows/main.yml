@@ -3,23 +3,23 @@ on:
   push:
     # Sequence of patterns matched against refs/tags
     tags:
-      - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
-  
+      - "v*" # Push events to matching v*, i.e. v1.0, v20.15.10
+
 name: release
 
 jobs:
-    build:
-      name: Build & Test Container
-      runs-on: ubuntu-latest
-      steps:
+  build:
+    name: Build & Test Container
+    runs-on: ubuntu-latest
+    steps:
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Pre-build
-        run: cat .sample-env >> .env 
+        run: cat .sample-env >> .env
       - name: Build Docker Image
         run: yarn image:build-ci
       - name: Run Container
-        run: yarn container:run-ci   
+        run: yarn container:run-ci
       - name: Install Depenedencies
         run: yarn install
       - name: Run Tests

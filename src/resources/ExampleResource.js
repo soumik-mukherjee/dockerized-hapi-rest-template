@@ -11,12 +11,16 @@ export const SonnyTheHumanoid = {
     },
     handler: async function (request, h) {
       try {
-        return h.response(`Hello ${request.query.creator}, this is Sonny. Thanks for creating me!`).type("text/plain").code(201);
-      }
-      catch (err) {
+        return h
+          .response(
+            `Hello ${request.query.creator}, this is Sonny. Thanks for creating me!`
+          )
+          .type("text/plain")
+          .code(201);
+      } catch (err) {
         console.error(err);
         return h.response("Internal error").code(500);
       }
-    }
-  }
+    },
+  },
 };
