@@ -23,6 +23,8 @@ describe("SonnyTheHumanoid", () => {
   it("responds in plain text", () => {
     const { res, payload } = response;
 
+    
+    
     expect(res.headers["content-type"]).to.equal("text/plain; charset=utf-8");
   });
 
