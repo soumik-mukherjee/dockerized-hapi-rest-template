@@ -16,7 +16,6 @@ export const SonnyTheHumanoid = {
             `Hello ${request.query.creator}, this is Sonny. Thanks for creating me!`
           )
           .type("text/plain")
-
           .code(201);
       } catch (err) {
         console.error(err);
